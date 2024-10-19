@@ -2,8 +2,8 @@ import os
 from extract_audio import extract_audio
 from transcribe_audio import transcribe_audio
 from correct_transcription import correct_transcription
-from generate_audio import text_to_speech
-from sync_audio_video import sync_audio_with_video
+from generate_audio import generate_audio
+from sync_audio_video import overlay_audio
 
 if __name__ == "__main__":
     video_file = 'input_video.mp4'
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         f.write(corrected_text)
 
     # Step 4: Convert Corrected Text to Speech
-    text_to_speech(corrected_text, 'output_audio.mp3')
+    generate_audio(corrected_text, 'output_audio.mp3')
 
     # Step 5: Sync Audio with Video
-    sync_audio_with_video(video_file, 'output_audio.mp3', 'output_video.mp4')
+    overlay_audio(video_file, 'output_audio.mp3', 'output_video.mp4')
